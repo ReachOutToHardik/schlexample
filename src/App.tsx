@@ -450,29 +450,56 @@ const BentoHighlights = () => (
 );
 
 const Testimonials = () => (
-  <section className="py-32 bg-white container mx-auto px-4 md:px-12">
-    <div className="grid lg:grid-cols-12 gap-24 items-center">
-      <div className="lg:col-span-5">
-        <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Voice of the Community</span>
-        <h2 className="text-5xl md:text-6xl font-serif font-black text-school-primary mb-10 leading-tight">Trusted by <br /> <span className="italic font-light">Generations.</span></h2>
-        <div className="flex gap-4">
-          <div className="w-12 h-12 border border-slate-200 flex items-center justify-center text-slate-300 hover:text-school-primary hover:border-school-primary transition-all cursor-pointer"><ArrowRight size={20} className="rotate-180" /></div>
-          <div className="w-12 h-12 border border-slate-200 flex items-center justify-center text-slate-300 hover:text-school-primary hover:border-school-primary transition-all cursor-pointer"><ArrowRight size={20} /></div>
-        </div>
-      </div>
-      <div className="lg:col-span-7">
-        <div className="bg-slate-50 p-16 relative overflow-hidden rounded-sm">
-          <div className="text-school-accent font-serif text-[120px] absolute -top-10 -left-4 opacity-10">"</div>
-          <p className="text-2xl font-serif font-light italic text-slate-600 leading-relaxed mb-12 relative z-10">
-            "Sending our kids to Vidyashakti was the best investment we ever made. The balance of discipline and empathy is unmatched in Bangalore."
-          </p>
-          <div className="flex items-center gap-6 relative z-10">
-            <div className="w-16 h-16 bg-slate-200 rounded-full border-4 border-white shadow-xl overflow-hidden grayscale">
-              <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?auto=format&fit=crop&q=80&w=200" className="w-full h-full object-cover" />
+  <section className="py-32 bg-white overflow-hidden relative">
+    <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-school-accent/5 rounded-full blur-3xl -ml-32 pointer-events-none" />
+    <div className="container mx-auto px-4 md:px-12 relative z-10">
+      <div className="grid lg:grid-cols-12 gap-24 items-center">
+        <div className="lg:col-span-5">
+          <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Voice of the Community</span>
+          <h2 className="text-5xl md:text-7xl font-serif font-black text-school-primary mb-10 leading-tight tracking-tighter">Trusted by <br /> <span className="italic font-light">Generations.</span></h2>
+          
+          <div className="grid grid-cols-2 gap-8 mb-12 py-8 border-y border-slate-100">
+            <div>
+              <span className="block text-3xl font-serif font-black text-school-primary mb-1 italic">4.9/5</span>
+              <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400">Parent Satisfaction</span>
             </div>
             <div>
-              <h4 className="text-xl font-serif font-black text-school-primary">Vikram Malhotra</h4>
-              <p className="text-[10px] font-black uppercase tracking-widest text-school-accent italic">Parent, Batch of 2024</p>
+              <span className="block text-3xl font-serif font-black text-school-primary mb-1 italic">15k+</span>
+              <span className="block text-[10px] font-black uppercase tracking-widest text-slate-400">Alumni Network</span>
+            </div>
+          </div>
+
+          <div className="flex gap-4">
+            <div className="w-14 h-14 border border-slate-200 flex items-center justify-center text-slate-300 hover:text-white hover:bg-school-primary hover:border-school-primary transition-all cursor-pointer"><ArrowRight size={24} className="rotate-180" /></div>
+            <div className="w-14 h-14 border border-slate-200 flex items-center justify-center text-slate-300 hover:text-white hover:bg-school-primary hover:border-school-primary transition-all cursor-pointer"><ArrowRight size={24} /></div>
+          </div>
+        </div>
+        
+        <div className="lg:col-span-7">
+          <div className="relative">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-school-accent/10 rounded-full blur-2xl animate-pulse" />
+            <div className="bg-[#0a0f1d] p-16 md:p-20 relative overflow-hidden rounded-sm shadow-2xl">
+              <div className="text-school-accent font-serif text-[180px] absolute -top-16 -left-8 opacity-10 leading-none">"</div>
+              <p className="text-2xl md:text-3xl font-serif font-light italic text-white/90 leading-relaxed mb-16 relative z-10">
+                "Sending our kids to Vidyashakti was the best investment we ever made. The balance of discipline and empathy is unmatched in Bangalore. Our daughter's evolution from a shy student to a confident debater is a testament to the school's ethos."
+              </p>
+              <div className="flex items-center justify-between relative z-10 border-t border-white/10 pt-10">
+                <div className="flex items-center gap-6">
+                  <div className="w-20 h-20 bg-slate-200 rounded-full border-4 border-white/10 shadow-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+                    <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?auto=format&fit=crop&q=80&w=200" className="w-full h-full object-cover" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-serif font-black text-white">Vikram Malhotra</h4>
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-school-accent italic">MD, Malhotra Group &bull; Parent</p>
+                  </div>
+                </div>
+                <div className="hidden md:flex flex-col items-end">
+                  <div className="flex gap-1 text-school-accent mb-2">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
+                  </div>
+                  <span className="text-white/20 text-[10px] font-black uppercase tracking-widest italic">Batch of 2024</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -554,26 +581,38 @@ const AlumniSuccess = () => (
 const FaqSection = () => (
   <section className="py-32 bg-slate-50">
     <div className="container mx-auto px-4 md:px-12">
-      <div className="text-center mb-24">
-        <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Parental Guidance</span>
-        <h2 className="text-5xl font-serif font-black text-school-primary tracking-tighter">Common <span className="italic font-light">Queries.</span></h2>
-      </div>
-      <div className="max-w-4xl mx-auto space-y-6">
-        {[
-          { q: "What is the teacher-student ratio at VIS?", a: "We maintain a strict 1:12 ratio in primary sections and 1:15 in middle/senior sections to ensure personalized mentorship." },
-          { q: "How does the school manage digital safety?", a: "Every classroom is firewalled with enterprise-grade filters, and student devices are strictly managed via centralized MDM protocols." },
-          { q: "Are there provisions for competitive exam coaching?", a: "Yes, we have integrated coaching for JEE, NEET, and CLAT starting from Grade IX within our regular academic schedule." }
-        ].map((faq, i) => (
-          <div key={i} className="bg-white p-10 shadow-sm border border-slate-100 group cursor-pointer">
-            <div className="flex justify-between items-center mb-4">
-              <h4 className="text-lg font-serif font-black text-school-primary group-hover:text-school-accent transition-colors">{faq.q}</h4>
-              <ChevronDown className="text-slate-300 group-hover:text-school-accent transition-transform group-hover:rotate-180" />
-            </div>
-            <p className="text-slate-500 font-light text-sm italic border-l-2 border-school-accent/20 pl-6 mt-6 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-500 overflow-hidden">
-              {faq.a}
-            </p>
+      <div className="flex flex-col lg:flex-row gap-24">
+        <div className="lg:w-1/3">
+          <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">Parental Guidance</span>
+          <h2 className="text-5xl md:text-6xl font-serif font-black text-school-primary tracking-tighter mb-8 leading-tight">Common <br /><span className="italic font-light">Queries.</span></h2>
+          <p className="text-slate-500 font-light italic leading-relaxed">Everything you need to know about our admission protocols, campus life, and academic rigor.</p>
+          <div className="mt-12 p-8 bg-white border-l-4 border-school-accent shadow-xl">
+            <p className="text-xs font-black uppercase tracking-widest text-school-primary mb-2">Still have questions?</p>
+            <p className="text-slate-500 text-[10px] uppercase tracking-widest mb-6">Our helpdesk is active 24/7</p>
+            <button className="text-school-accent font-black uppercase tracking-widest text-[10px] flex items-center gap-2 hover:translate-x-2 transition-transform">Contact Helpdesk <ArrowRight size={14} /></button>
           </div>
-        ))}
+        </div>
+        <div className="lg:w-2/3 space-y-4">
+          {[
+            { q: "What is the teacher-student ratio at VIS?", a: "We maintain a strict 1:12 ratio in primary sections and 1:15 in middle/senior sections to ensure personalized mentorship." },
+            { q: "How does the school manage digital safety?", a: "Every classroom is firewalled with enterprise-grade filters, and student devices are strictly managed via centralized MDM protocols." },
+            { q: "Are there provisions for competitive exam coaching?", a: "Yes, we have integrated coaching for JEE, NEET, and CLAT starting from Grade IX within our regular academic schedule." },
+            { q: "What is the primary medium of instruction?", a: "English is the primary medium. We also offer Sanskrit, Hindi, and French as second/third language options." },
+            { q: "Does the school offer residential facilities?", a: "VIS is primarily a day school, but we offer extended day boarding facilities with supervised study hours until 6 PM." }
+          ].map((faq, i) => (
+            <div key={i} className="bg-white p-8 shadow-sm border border-slate-100 group cursor-pointer hover:shadow-md transition-all">
+              <div className="flex justify-between items-center">
+                <h4 className="text-base font-serif font-black text-school-primary group-hover:text-school-accent transition-colors">{faq.q}</h4>
+                <div className="w-8 h-8 rounded-full border border-slate-100 flex items-center justify-center group-hover:bg-school-accent group-hover:border-school-accent group-hover:text-white transition-all">
+                  <ChevronDown size={14} className="group-hover:rotate-180 transition-transform" />
+                </div>
+              </div>
+              <p className="text-slate-500 font-light text-sm italic border-l-2 border-school-accent/20 pl-6 mt-6 opacity-0 h-0 group-hover:opacity-100 group-hover:h-auto transition-all duration-500 overflow-hidden">
+                {faq.a}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
