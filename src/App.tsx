@@ -816,18 +816,18 @@ const FacultyPage = () => (
     <div className="container mx-auto px-4 md:px-12 pb-32">
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
         {[
-          { name: "Dr. Arvind Iyer", role: "Principal", qual: "Ph.D Molecular Biology, M.Ed (Oxford)", xp: "28 Yrs" },
-          { name: "Mrs. Meena Sharma", role: "Sr. Dean", qual: "M.A. English (JNU), B.Ed", xp: "22 Yrs" },
-          { name: "Mr. Thomas Philip", role: "HOD Commerce", qual: "M.Com, Chartered Accountant", xp: "15 Yrs" },
-          { name: "Dr. Anjali Menon", role: "Director - STEM", qual: "Ph.D Applied Sciences", xp: "18 Yrs" },
-          { name: "Mr. Rajesh Verma", role: "Senior Math Lead", qual: "M.Sc Mathematics, GATE", xp: "14 Yrs" },
-          { name: "Mrs. Fatima Zahra", role: "Sr. Humanities Lead", qual: "M.A. International Relations", xp: "12 Yrs" },
-          { name: "Mr. Sanjay Basu", role: "HOD Physical Ed.", qual: "National Level Athlete, NIS", xp: "20 Yrs" },
-          { name: "Ms. Priyanka Das", role: "Visual Arts Dir.", qual: "MVA Shantiniketan", xp: "10 Yrs" },
+          { name: "Dr. Arvind Iyer", role: "Principal", qual: "Ph.D Molecular Biology, M.Ed (Oxford)", xp: "28 Yrs", img: "/images/staff/person1.jpg" },
+          { name: "Mrs. Meena Sharma", role: "Sr. Dean", qual: "M.A. English (JNU), B.Ed", xp: "22 Yrs", img: "/images/staff/person4woman.jpg" },
+          { name: "Mr. Thomas Philip", role: "HOD Commerce", qual: "M.Com, Chartered Accountant", xp: "15 Yrs", img: "/images/staff/person2.jpg" },
+          { name: "Dr. Anjali Menon", role: "Director - STEM", qual: "Ph.D Applied Sciences", xp: "18 Yrs", img: "/images/staff/person5woman.jpg" },
+          { name: "Mr. Rajesh Verma", role: "Senior Math Lead", qual: "M.Sc Mathematics, GATE", xp: "14 Yrs", img: "/images/staff/person3.jpg" },
+          { name: "Mrs. Fatima Zahra", role: "Sr. Humanities Lead", qual: "M.A. International Relations", xp: "12 Yrs", img: "/images/staff/person4woman.jpg" },
+          { name: "Mr. Sanjay Basu", role: "HOD Physical Ed.", qual: "National Level Athlete, NIS", xp: "20 Yrs", img: "/images/staff/person1.jpg" },
+          { name: "Ms. Priyanka Das", role: "Visual Arts Dir.", qual: "MVA Shantiniketan", xp: "10 Yrs", img: "/images/staff/person5woman.jpg" },
         ].map((f, i) => (
           <div key={i} className="group">
             <div className="aspect-[4/5] bg-slate-100 mb-6 overflow-hidden relative grayscale hover:grayscale-0 transition-all duration-700">
-              <div className="absolute inset-0 flex items-center justify-center text-slate-300 font-serif text-8xl font-black">VIS</div>
+              <img src={f.img} alt={f.name} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" />
               <div className="absolute inset-0 bg-school-primary/10 mix-blend-multiply" />
             </div>
             <h4 className="text-xl font-serif font-black text-school-primary mb-1">{f.name}</h4>
