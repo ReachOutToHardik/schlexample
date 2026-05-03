@@ -451,10 +451,9 @@ const BentoHighlights = () => (
 
 const Testimonials = () => (
   <section className="py-32 bg-white overflow-hidden relative">
-    <div className="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-school-accent/5 rounded-full blur-3xl -ml-32 pointer-events-none" />
     <div className="container mx-auto px-4 md:px-12 relative z-10">
       <div className="grid lg:grid-cols-12 gap-24 items-center">
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-4">
           <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Voice of the Community</span>
           <h2 className="text-5xl md:text-7xl font-serif font-black text-school-primary mb-10 leading-tight tracking-tighter">Trusted by <br /> <span className="italic font-light">Generations.</span></h2>
           
@@ -475,31 +474,26 @@ const Testimonials = () => (
           </div>
         </div>
         
-        <div className="lg:col-span-7">
-          <div className="relative">
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-school-accent/10 rounded-full blur-2xl animate-pulse" />
-            <div className="bg-[#0a0f1d] p-16 md:p-20 relative overflow-hidden rounded-sm shadow-2xl">
-              <div className="text-school-accent font-serif text-[180px] absolute -top-16 -left-8 opacity-10 leading-none">"</div>
-              <p className="text-2xl md:text-3xl font-serif font-light italic text-white/90 leading-relaxed mb-16 relative z-10">
-                "Sending our kids to Vidyashakti was the best investment we ever made. The balance of discipline and empathy is unmatched in Bangalore. Our daughter's evolution from a shy student to a confident debater is a testament to the school's ethos."
-              </p>
-              <div className="flex items-center justify-between relative z-10 border-t border-white/10 pt-10">
-                <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 bg-slate-200 rounded-full border-4 border-white/10 shadow-xl overflow-hidden grayscale group-hover:grayscale-0 transition-all">
-                    <img src="https://images.unsplash.com/photo-1544168190-79c17527004f?auto=format&fit=crop&q=80&w=200" className="w-full h-full object-cover" />
+        <div className="lg:col-span-8">
+          <div className="relative" style={{ perspective: '2000px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6" style={{ transform: 'rotateX(10deg) rotateY(-10deg)', transformStyle: 'preserve-3d' }}>
+              {[
+                { p: "The individual attention at VIS is unparalleled. My son's math scores jumped 40% in one year.", a: "Ananya Rao", b: "Grade 9 Parent" },
+                { p: "A perfect blend of modern technology and traditional values. Truly an international school with an Indian heart.", a: "Dr. Sameer Khan", b: "Grade 4 Parent" },
+                { p: "The sports facilities are Olympic grade. But more importantly, the coaches are mentors for life.", a: "Sanjay Mehra", b: "Grade 11 Parent" },
+                { p: "The Visual Arts program is a hidden gem. My daughter's portfolio for college was entirely built at VIS.", a: "Lisa George", b: "Grade 12 Parent" }
+              ].map((r, i) => (
+                <div key={i} className="bg-slate-50 border border-slate-100 p-8 rounded-sm hover:bg-white hover:shadow-2xl transition-all duration-500 group" style={{ transform: `translateZ(${i * 20}px)` }}>
+                  <div className="text-school-accent mb-4">
+                    {[...Array(5)].map((_, i) => <Star key={i} size={10} fill="currentColor" className="inline mr-0.5" />)}
                   </div>
+                  <p className="text-slate-600 font-light italic text-xs leading-relaxed mb-6">"{r.p}"</p>
                   <div>
-                    <h4 className="text-2xl font-serif font-black text-white">Vikram Malhotra</h4>
-                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-school-accent italic">MD, Malhotra Group &bull; Parent</p>
+                    <h4 className="text-school-primary font-serif font-black text-sm">{r.a}</h4>
+                    <p className="text-[8px] font-black uppercase tracking-widest text-slate-400">{r.b}</p>
                   </div>
                 </div>
-                <div className="hidden md:flex flex-col items-end">
-                  <div className="flex gap-1 text-school-accent mb-2">
-                    {[...Array(5)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
-                  </div>
-                  <span className="text-white/20 text-[10px] font-black uppercase tracking-widest italic">Batch of 2024</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -577,6 +571,7 @@ const AlumniSuccess = () => (
     </div>
   </section>
 );
+
 
 const FaqSection = () => (
   <section className="py-32 bg-slate-50">
