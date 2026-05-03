@@ -999,8 +999,9 @@ const AboutPage = () => (
 
 const Footer = () => (
   <footer className="bg-[#0a0f1d] text-white pt-32 pb-16 relative overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
     <div className="container mx-auto px-4 md:px-12 grid lg:grid-cols-12 gap-24 relative z-10">
-      <div className="lg:col-span-5">
+      <div className="lg:col-span-4">
         <div className="flex items-center gap-4 mb-10">
           <div className="w-16 h-16 bg-white border-2 border-school-accent rounded-full flex items-center justify-center font-serif text-3xl font-black text-school-primary">V</div>
           <div className="flex flex-col">
@@ -1008,51 +1009,61 @@ const Footer = () => (
             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40">International School</span>
           </div>
         </div>
-        <p className="text-white/40 font-light text-lg leading-relaxed mb-12 italic max-w-md">
+        <p className="text-white/40 font-light text-lg leading-relaxed mb-12 italic max-w-sm">
           A dedicated space for the holistic evolution of child intellect, character, and spirit. Shaping future global thinkers with Indian roots.
         </p>
         <div className="flex gap-6">
-          {[Facebook, Twitter, Instagram, Mail].map((Icon, i) => (
-            <div key={i} className="w-12 h-12 bg-white/5 flex items-center justify-center group hover:bg-school-accent transition-all cursor-pointer rounded-full">
-              <Icon size={20} className="text-white/40 group-hover:text-white transition-colors" />
+          {[Facebook, Twitter, Instagram, Linkedin, Mail].map((Icon, i) => (
+            <div key={i} className="w-12 h-12 bg-white/5 flex items-center justify-center group hover:bg-school-accent transition-all cursor-pointer rounded-full border border-white/5">
+              <Icon size={18} className="text-white/40 group-hover:text-white transition-colors" />
             </div>
           ))}
         </div>
       </div>
 
-      <div className="lg:col-span-7 grid md:grid-cols-3 gap-16">
+      <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-12">
         <div>
-          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Quick Links</h4>
-          <ul className="space-y-6 text-sm font-light text-white/50">
+          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Institutional</h4>
+          <ul className="space-y-6 text-xs font-light text-white/50 tracking-wide">
             <li className="hover:text-white cursor-pointer transition-colors">School Ethos</li>
-            <li className="hover:text-white cursor-pointer transition-colors">Admissions Portal</li>
-            <li className="hover:text-white cursor-pointer transition-colors">Alumni Network</li>
-            <li className="hover:text-white cursor-pointer transition-colors">Careers & Internship</li>
-            <li className="hover:text-white cursor-pointer transition-colors">Privacy Charter</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Leadership Team</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Infrastructure</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Media Gallery</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Careers</li>
           </ul>
         </div>
         <div>
-          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Contact Us</h4>
-          <div className="space-y-10 text-sm font-light text-white/50 italic">
-            <div>
-              <p className="text-white font-black not-italic text-xs mb-2 uppercase tracking-widest">Main Campus</p>
-              <p>Survey No. 42, Electronics City Phase 1,<br />Bengaluru, Karnataka 560100</p>
-            </div>
-            <div>
-              <p className="text-white font-black not-italic text-xs mb-2 uppercase tracking-widest">General Enquiries</p>
-              <p>+91 (80) 4567 8901</p>
-              <p>info@vidyashakti.edu.in</p>
-            </div>
-          </div>
+          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Departments</h4>
+          <ul className="space-y-6 text-xs font-light text-white/50 tracking-wide">
+            <li className="hover:text-white cursor-pointer transition-colors">STEM & Robotics</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Visual & Performing Arts</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Physical Education</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Humanities</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Research Cell</li>
+          </ul>
         </div>
         <div>
-          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Newsletter</h4>
-          <p className="text-white/30 text-xs font-light italic mb-8">Quarterly updates about the school's progression and events.</p>
-          <div className="relative">
-            <input type="email" placeholder="Email address" className="w-full bg-white/5 border border-white/10 p-4 font-light text-xs outline-none focus:border-school-accent transition-colors" />
-            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-school-accent hover:translate-x-1 transition-transform">
-              <ArrowRight size={18} />
-            </button>
+          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Support</h4>
+          <ul className="space-y-6 text-xs font-light text-white/50 tracking-wide">
+            <li className="hover:text-white cursor-pointer transition-colors">Parent Portal</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Student Login</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Counseling Cell</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Wellness Center</li>
+            <li className="hover:text-white cursor-pointer transition-colors">Transport Hub</li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="text-xs font-black uppercase tracking-[0.3em] text-school-accent mb-10">Contact</h4>
+          <div className="space-y-10 text-[11px] font-light text-white/50 italic leading-relaxed">
+            <div>
+              <p className="text-white font-black not-italic text-[10px] mb-2 uppercase tracking-widest">Global Campus</p>
+              <p>Survey No. 42, Electronics City Phase 1,<br />Bengaluru, KA 560100</p>
+            </div>
+            <div>
+              <p className="text-white font-black not-italic text-[10px] mb-2 uppercase tracking-widest">Enquiries</p>
+              <p>+91 (80) 4567 8901</p>
+              <p className="text-school-accent not-italic font-bold">info@vidyashakti.edu.in</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1060,10 +1071,10 @@ const Footer = () => (
 
     <div className="container mx-auto px-4 md:px-12 mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
       <div className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
-        © 2026 VIDYASHAKTI INTERNATIONAL SCHOOL. ALL RIGHTS RESERVED.
+        © 2026 VIDYASHAKTI INTERNATIONAL SCHOOL. AFFILIATED TO CBSE (KA-1209).
       </div>
       <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
-        <span className="hover:text-white cursor-pointer transition-colors">Legacy</span>
+        <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
         <span className="hover:text-white cursor-pointer transition-colors">Mandatory Disclosures</span>
         <span className="hover:text-white cursor-pointer transition-colors">Sitemap</span>
       </div>
