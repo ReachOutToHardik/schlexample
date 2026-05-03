@@ -185,10 +185,10 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
 
 const Hero = () => {
   const images = [
-    "images/architecture-independence-palace-ho-chi-minh-city.jpg",
-    "images/download (23).jpg",
-    "images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
-    "images/young-boy-learning-more-about-chemistry-class.jpg"
+    "/images/architecture-independence-palace-ho-chi-minh-city.jpg",
+    "/images/school-facade.jpg",
+    "/images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
+    "/images/young-boy-learning-more-about-chemistry-class.jpg"
   ];
 
   const [current, setCurrent] = useState(0);
@@ -1122,10 +1122,10 @@ export default function App() {
             <h2 className="text-5xl md:text-6xl font-serif font-black text-school-primary mb-16 tracking-tighter">Life at <span className="italic font-light">Vidyashakti.</span></h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                "images/architecture-independence-palace-ho-chi-minh-city.jpg",
-                "images/download (23).jpg",
-                "images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
-                "images/young-boy-learning-more-about-chemistry-class.jpg"
+                "/images/architecture-independence-palace-ho-chi-minh-city.jpg",
+                "/images/school-facade.jpg",
+                "/images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
+                "/images/young-boy-learning-more-about-chemistry-class.jpg"
               ].map((img, i) => (
                 <div key={i} className="aspect-square overflow-hidden rounded-xl shadow-lg relative group">
                   <img src={img} alt="School life" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
