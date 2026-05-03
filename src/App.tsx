@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+
 import {
   Phone,
   Mail,
@@ -43,6 +43,8 @@ import { cn } from './lib/utils';
 
 // --- Components ---
 
+
+
 const TopBar = () => (
   <div className="bg-school-primary text-white py-2.5 px-4 md:px-12 hidden md:flex justify-between items-center text-[11px] font-bold tracking-widest uppercase border-b border-white/5">
     <div className="flex items-center gap-10">
@@ -71,12 +73,17 @@ const TopBar = () => (
 
 const Marquee = () => (
   <div className="bg-school-secondary text-white py-2.5 overflow-hidden border-y border-white/10">
-    <div className="flex">
-      <div className="bg-school-accent text-white font-black px-6 z-10 text-[10px] uppercase flex items-center shrink-0 tracking-[0.2em] italic">
-        Important Updates
+    <div className="container mx-auto px-4 md:px-12 flex items-center justify-between">
+      <div className="flex items-center gap-6">
+        <div className="bg-school-accent text-white font-black px-4 py-1 text-[9px] uppercase tracking-widest italic shrink-0">
+          Latest Announcement
+        </div>
+        <div className="text-[11px] font-bold tracking-wide opacity-90 truncate">
+          Admissions Open for 2026-27: Kindergarten to Grade XII &bull; 100% CBSE Result Achieved for the 10th Consecutive Year
+        </div>
       </div>
-      <div className="animate-marquee py-1 text-xs font-bold tracking-wide">
-        &bull; Admissions Open for 2026-27: Kindergarten to Grade XII &bull; Congratulations to Grade X Toppers - 100% Result Achieved for the 10th Consecutive Year &bull; School Summer Break starts from May 15th to June 10th &bull; Annual Science & Innovation Fair scheduled for October 22nd &bull;
+      <div className="hidden md:flex items-center gap-2 text-school-accent font-black text-[9px] uppercase tracking-widest">
+        View All <ChevronRight size={14} />
       </div>
     </div>
   </div>
@@ -147,9 +154,9 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
       </button>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      
         {mobileMenuOpen && (
-          <motion.div initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: 100 }} className="fixed inset-0 bg-school-primary z-[100] p-8 text-white flex flex-col">
+          <div className="fixed inset-0 bg-school-primary z-[100] p-8 text-white flex flex-col">
             <div className="flex justify-between items-center mb-16">
               <span className="font-serif font-black text-3xl uppercase tracking-tighter">Vidyashakti</span>
               <button onClick={() => setMobileMenuOpen(false)}><X size={40} /></button>
@@ -169,9 +176,9 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
                 <button className="border border-white/20 py-5 font-black uppercase tracking-widest">Parent Login</button>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      
     </nav>
   );
 };
@@ -196,24 +203,18 @@ const Hero = () => {
   return (
     <section className="relative h-[650px] md:h-[800px] overflow-hidden">
       <div className="absolute inset-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={current}
-            src={images[current]}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            alt="Campus Life"
-            className="w-full h-full object-cover"
-          />
-        </AnimatePresence>
+        <img
+          key={current}
+          src={images[current]}
+          alt="Campus Life"
+          className="w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-school-primary/95 via-school-primary/60 to-transparent z-10" />
         <div className="absolute inset-0 bg-gradient-to-t from-school-primary/80 via-transparent to-transparent z-10" />
       </div>
 
       <div className="container mx-auto px-4 md:px-12 h-full flex items-end pb-32 relative z-10">
-        <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl">
+        <div className="max-w-4xl">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-12 h-[2px] bg-school-accent" />
             <span className="bg-school-accent/20 backdrop-blur-md border border-school-accent text-school-accent px-4 py-1 font-black text-[10px] uppercase tracking-[0.3em]">Affiliated to CBSE - India</span>
@@ -235,7 +236,7 @@ const Hero = () => {
               Virtual Campus Tour
             </button>
           </div>
-        </motion.div>
+        </div>
 
         {/* Slide Indicators */}
         <div className="absolute bottom-10 right-12 flex gap-3">
@@ -317,48 +318,86 @@ const EducationalPhilosophy = () => (
 
 const InstitutionalScores = () => (
   <section className="py-32 bg-[#0a0f1d] text-white relative overflow-hidden">
-    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
+    <div className="absolute top-0 right-0 w-1/2 h-full bg-school-accent/5 -skew-x-12 translate-x-1/4 pointer-events-none" />
+    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
+    
     <div className="container mx-auto px-4 md:px-12 relative z-10">
-      <div className="grid lg:grid-cols-2 gap-24 items-center">
-        <div>
-          <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Capability Index</span>
-          <h2 className="text-5xl md:text-6xl font-serif font-black mb-10 tracking-tighter italic">Evolutionary <br /> <span className="not-italic text-school-accent uppercase">Milestones.</span></h2>
-          <p className="text-white/40 text-lg font-light mb-12 italic leading-relaxed">We quantify excellence across multiple developmental vectors, ensuring every cohort exceeds global benchmarks.</p>
+      <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-center">
+        {/* Left Column: Metrics */}
+        <div className="lg:col-span-5 order-2 lg:order-1">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="h-px w-12 bg-school-accent" />
+            <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px]">Capability Index</span>
+          </div>
+          
+          <h2 className="text-5xl md:text-7xl font-serif font-black mb-10 leading-tight tracking-tighter italic text-white">
+            Evolutionary <br /> 
+            <span className="not-italic text-school-accent uppercase">Milestones.</span>
+          </h2>
+          
+          <p className="text-white/40 text-xl font-light mb-16 italic leading-relaxed max-w-md">
+            We quantify excellence across multiple developmental vectors, ensuring every cohort exceeds global benchmarks.
+          </p>
 
-          <div className="space-y-10">
+          <div className="grid grid-cols-2 gap-x-8 gap-y-12">
             {[
-              { label: "Academic Proficiency", score: 98, color: "bg-school-accent" },
-              { label: "Critical Thinking Index", score: 92, color: "bg-white" },
-              { label: "Social Emotional Intelligence", score: 95, color: "bg-school-accent" },
-              { label: "Technological Fluency", score: 89, color: "bg-white" }
+              { label: "Academic Proficiency", score: 98, desc: "Global testing benchmarks." },
+              { label: "Critical Thinking", score: 92, desc: "Logic & reasoning modules." },
+              { label: "Emotional Intel", score: 95, desc: "Empathy & leadership." },
+              { label: "Digital Fluency", score: 89, desc: "AI & tech competency." }
             ].map((s, i) => (
-              <div key={i}>
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-white/60">{s.label}</span>
-                  <span className="text-school-accent font-serif italic font-black">{s.score}%</span>
-                </div>
-                <div className="h-[2px] w-full bg-white/10 relative overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${s.score}%` }}
-                    transition={{ duration: 1.5, delay: i * 0.2 }}
-                    viewport={{ once: true }}
-                    className={cn("absolute h-full top-0 left-0", s.color)}
-                  />
-                </div>
+              <div key={i} className="group">
+                <span className="text-5xl font-serif italic font-black text-school-accent block mb-2">{s.score}%</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white group-hover:text-school-accent transition-colors block mb-4">{s.label}</span>
+                <p className="text-[11px] text-white/40 font-light italic leading-relaxed">{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative">
-          <div className="aspect-square border border-white/10 p-4 rounded-full animate-spin-slow">
-            <div className="w-full h-full border border-school-accent/30 rounded-full border-dashed" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <span className="text-school-accent font-serif text-8xl font-black italic block">Top 100</span>
-              <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40">Global Schools Index</span>
+
+        {/* Right Column: Imagery Grid */}
+        <div className="lg:col-span-7 order-1 lg:order-2">
+          <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[600px] md:h-[800px] relative">
+            <div className="col-span-12 row-span-3 bg-slate-900 relative overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1581093588401-fbb62a02f120?auto=format&fit=crop&q=80&w=1200" 
+                className="w-full h-full object-cover grayscale opacity-50 group-hover:scale-105 group-hover:grayscale-0 transition-all duration-1000"
+                alt="Research"
+              />
+              <div className="absolute inset-0 bg-school-primary/40 mix-blend-multiply" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-10">
+                <span className="text-school-accent font-serif text-8xl md:text-9xl font-black italic block leading-none">Top 100</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.5em] text-white/40 block mt-4">Global Schools Index</span>
+              </div>
             </div>
+            
+            <div className="col-span-4 row-span-3 relative overflow-hidden group">
+              <img 
+                src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=800" 
+                className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 transition-all duration-700"
+                alt="Classroom"
+              />
+              <div className="absolute inset-0 border border-white/5" />
+            </div>
+
+            <div className="col-span-8 row-span-2 bg-school-accent p-10 flex flex-col justify-between group cursor-default">
+              <Trophy size={40} className="text-white opacity-20 group-hover:opacity-100 transition-opacity" />
+              <div>
+                <span className="text-4xl md:text-6xl font-serif font-black block mb-2 text-white">99.8</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-white/60">Percentile Global Performance</span>
+              </div>
+            </div>
+
+            <div className="col-span-8 row-span-1 relative overflow-hidden group">
+               <img 
+                src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?auto=format&fit=crop&q=80&w=800" 
+                className="w-full h-full object-cover grayscale opacity-30 group-hover:opacity-100 transition-all duration-700"
+                alt="Students"
+              />
+              <div className="absolute inset-0 bg-school-primary/60" />
+            </div>
+
+            <div className="absolute -top-12 -right-12 w-48 h-48 border border-white/5 rounded-full animate-spin-slow pointer-events-none hidden md:block" />
           </div>
         </div>
       </div>
@@ -446,7 +485,7 @@ const CoCurricular = () => (
       <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-12">
         <div className="max-w-xl">
           <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Beyond Academia</span>
-          <h2 className="text-5xl md:text-7xl font-serif font-black leading-tight tracking-tighter italic">Cultural <br /> & <span className="not-italic text-school-accent uppercase">Artistic</span> <br /> Elevation.</h2>
+          <h2 className="text-5xl md:text-7xl font-serif font-black leading-tight tracking-tighter italic text-white">Cultural <br /> & <span className="not-italic text-school-accent uppercase">Artistic</span> <br /> Elevation.</h2>
         </div>
         <p className="text-white/40 text-xl font-light italic max-w-sm md:text-right border-r-4 border-white/5 pr-10">Integration of classical arts, experimental theater, and contemporary music as core curriculum components.</p>
       </div>
@@ -577,7 +616,7 @@ const Features = () => (
         { title: "Global Pedagogy", desc: "A curriculum that integrates CBSE standards with International baccalaureate best practices.", icon: Globe },
         { title: "Digital Native", desc: "Every classroom is a smart-hub, equipped with high-speed tactile learning systems and digital archives.", icon: Monitor }
       ].map((f, i) => (
-        <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group">
+        <div key={i}  className="group">
           <div className="w-16 h-16 bg-slate-50 flex items-center justify-center mb-8 group-hover:bg-school-accent transition-all duration-500 rounded-sm">
             <f.icon size={28} className="text-school-primary group-hover:text-white transition-colors" />
           </div>
@@ -587,7 +626,7 @@ const Features = () => (
           <p className="text-slate-500 leading-relaxed font-light italic">
             {f.desc}
           </p>
-        </motion.div>
+        </div>
       ))}
     </div>
   </section>
@@ -603,7 +642,7 @@ const NoticeBoard = () => (
     <div className="container mx-auto px-4 md:px-12 relative z-10 grid lg:grid-cols-2 gap-24 items-center">
       <div>
         <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Real-time Information</span>
-        <h2 className="text-5xl md:text-7xl font-serif font-black mb-10 leading-tight tracking-tighter italic">Bulletin & <br /> <span className="text-school-accent not-italic">Announcements</span></h2>
+        <h2 className="text-5xl md:text-7xl font-serif font-black mb-10 leading-tight tracking-tighter italic text-white">Bulletin & <br /> <span className="text-school-accent not-italic">Announcements</span></h2>
         <p className="text-white/50 text-xl font-light max-w-md leading-relaxed">Stay updated with the latest institutional milestones, examination schedules, and extracurricular triumphs.</p>
       </div>
       <div className="space-y-12">
