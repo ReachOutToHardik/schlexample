@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -89,9 +89,11 @@ const Marquee = () => (
   </div>
 );
 
-const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange: (page: string) => void }) => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -100,13 +102,13 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
   }, []);
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'About VIS', id: 'about' },
-    { name: 'Admissions', id: 'admissions' },
-    { name: 'Academics', id: 'academics' },
-    { name: 'Faculty', id: 'faculty' },
-    { name: 'Infrastructure', id: 'facilities' },
-    { name: 'Contact', id: 'contact' },
+    { name: 'Home', path: '/' },
+    { name: 'About VIS', path: '/about' },
+    { name: 'Admissions', path: '/admissions' },
+    { name: 'Academics', path: '/academics' },
+    { name: 'Faculty', path: '/faculty' },
+    { name: 'Infrastructure', path: '/facilities' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -114,7 +116,7 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
       "sticky top-0 z-50 transition-all duration-500 px-4 md:px-12 flex justify-between items-center group",
       isScrolled ? "bg-white py-3 shadow-2xl" : "bg-white py-6"
     )}>
-      <div className="flex items-center gap-4 cursor-pointer" onClick={() => onPageChange('home')}>
+      <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/')}>
         <div className="w-14 h-14 md:w-16 md:h-16 bg-white border-2 border-school-primary rounded-full flex items-center justify-center p-1 shadow-xl relative">
           <div className="w-full h-full border-2 border-school-accent rounded-full flex items-center justify-center text-school-primary font-serif font-black text-2xl">V</div>
         </div>
@@ -126,26 +128,26 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
 
       <div className="hidden xl:flex items-center gap-10">
         {navLinks.map((link) => (
-          <button
-            key={link.id}
-            onClick={() => onPageChange(link.id)}
+          <Link
+            key={link.path}
+            to={link.path}
             className={cn(
               "text-[12px] font-black uppercase tracking-[0.1em] transition-all relative pb-2 outline-none",
-              activePage === link.id
+              location.pathname === link.path
                 ? "text-school-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-school-accent"
                 : "text-slate-500 hover:text-school-primary"
             )}
           >
             {link.name}
-          </button>
+          </Link>
         ))}
         <div className="flex gap-2 ml-4">
-          <button
-            onClick={() => onPageChange('admissions')}
+          <Link
+            to="/admissions"
             className="bg-school-accent text-white px-6 py-3 font-black text-[10px] uppercase tracking-widest hover:bg-school-primary transition-all shadow-lg rounded-sm"
           >
             Apply Now
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -163,16 +165,17 @@ const Navbar = ({ activePage, onPageChange }: { activePage: string, onPageChange
             </div>
             <div className="flex flex-col gap-10 text-center">
               {navLinks.map(link => (
-                <button
-                  key={link.id}
+                <Link
+                  key={link.path}
+                  to={link.path}
                   className="text-4xl font-serif italic border-b border-white/10 pb-4"
-                  onClick={() => { onPageChange(link.id); setMobileMenuOpen(false); }}
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
-                </button>
+                </Link>
               ))}
               <div className="mt-8 flex flex-col gap-4">
-                <button className="bg-school-accent text-white py-5 font-black uppercase tracking-widest">Admissions Portal</button>
+                <Link to="/admissions" onClick={() => setMobileMenuOpen(false)} className="bg-school-accent text-center text-white py-5 font-black uppercase tracking-widest">Admissions Portal</Link>
                 <button className="border border-white/20 py-5 font-black uppercase tracking-widest">Parent Login</button>
               </div>
             </div>
@@ -1085,8 +1088,55 @@ const ConnectCTA = () => (
   </section>
 );
 
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const HomePage = () => (
+  <>
+    <Hero />
+    <StatsBar />
+    <Affiliations />
+    <EducationalPhilosophy />
+    <InstitutionalScores />
+    <Virtues />
+    <BentoHighlights />
+    <CoCurricular />
+    <Features />
+    <ConnectCTA />
+    <AlumniSuccess />
+    <NoticeBoard />
+    <Testimonials />
+    <FaqSection />
+    <section className="py-32 bg-slate-50 container mx-auto px-4 md:px-12 text-center" id="gallery">
+      <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Visual Chronicles</span>
+      <h2 className="text-5xl md:text-6xl font-serif font-black text-school-primary mb-16 tracking-tighter">Life at <span className="italic font-light">Vidyashakti.</span></h2>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {[
+          "/images/architecture-independence-palace-ho-chi-minh-city.jpg",
+          "/images/school-facade.jpg",
+          "/images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
+          "/images/young-boy-learning-more-about-chemistry-class.jpg"
+        ].map((img, i) => (
+          <div key={i} className="aspect-square overflow-hidden rounded-xl shadow-lg relative group">
+            <img src={img} alt="School life" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+            <div className="absolute inset-0 bg-school-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <button className="text-white font-bold uppercase tracking-widest text-xs border border-white px-4 py-2">View Full</button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button className="mt-12 text-school-primary font-bold uppercase tracking-widest text-sm border-b-2 border-school-primary pb-1">Visit Our Media Gallery</button>
+    </section>
+  </>
+);
+
 export default function App() {
-  const [activePage, setActivePage] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -1099,66 +1149,29 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const renderPage = () => {
-    switch (activePage) {
-      case 'home': return (
-        <>
-          <Hero />
-          <StatsBar />
-          <Affiliations />
-          <EducationalPhilosophy />
-          <InstitutionalScores />
-          <Virtues />
-          <BentoHighlights />
-          <CoCurricular />
-          <Features />
-          <ConnectCTA />
-          <AlumniSuccess />
-          <NoticeBoard />
-          <Testimonials />
-          <FaqSection />
-          <section className="py-32 bg-slate-50 container mx-auto px-4 md:px-12 text-center" id="gallery">
-            <span className="text-school-accent font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Visual Chronicles</span>
-            <h2 className="text-5xl md:text-6xl font-serif font-black text-school-primary mb-16 tracking-tighter">Life at <span className="italic font-light">Vidyashakti.</span></h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                "/images/architecture-independence-palace-ho-chi-minh-city.jpg",
-                "/images/school-facade.jpg",
-                "/images/school-children-dressed-uniform-have-fun-play-schoolyard.jpg",
-                "/images/young-boy-learning-more-about-chemistry-class.jpg"
-              ].map((img, i) => (
-                <div key={i} className="aspect-square overflow-hidden rounded-xl shadow-lg relative group">
-                  <img src={img} alt="School life" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-school-primary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <button className="text-white font-bold uppercase tracking-widest text-xs border border-white px-4 py-2">View Full</button>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <button className="mt-12 text-school-primary font-bold uppercase tracking-widest text-sm border-b-2 border-school-primary pb-1">Visit Our Media Gallery</button>
-          </section>
-        </>
-      );
-      case 'about': return <AboutPage />;
-      case 'admissions': return <AdmissionsPage />;
-      case 'academics': return <AcademicsPage />;
-      case 'faculty': return <FacultyPage />;
-      case 'facilities': return <FacilitiesPage />;
-      case 'contact': return <ContactPage />;
-      default: return <Hero />;
-    }
-  };
-
   return (
-    <div className="min-h-screen selection:bg-school-accent selection:text-white">
-      <div className="fixed top-0 left-0 h-[2px] bg-school-accent z-[9999] transition-all duration-100" style={{ width: `${scrollProgress}%` }} />
-      <TopBar />
-      <Navbar activePage={activePage} onPageChange={setActivePage} />
-      <Marquee />
-      <main>
-        {renderPage()}
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <div className="min-h-screen selection:bg-school-accent selection:text-white">
+        <div className="fixed top-0 left-0 h-[2px] bg-school-accent z-[9999] transition-all duration-100" style={{ width: `${scrollProgress}%` }} />
+        <TopBar />
+        <Navbar />
+        <Marquee />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/admissions" element={<AdmissionsPage />} />
+            <Route path="/academics" element={<AcademicsPage />} />
+            <Route path="/faculty" element={<FacultyPage />} />
+            <Route path="/facilities" element={<FacilitiesPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            {/* Fallback to Home */}
+            <Route path="*" element={<HomePage />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
