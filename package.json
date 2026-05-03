@@ -1,5 +1,6 @@
 {
-  "name": "react-example",
+  "name": "vidyashakti-international-school",
+  "description": "Frontend for Vidyashakti International School",
   "private": true,
   "version": "0.0.0",
   "type": "module",

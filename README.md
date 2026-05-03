@@ -1,20 +1,59 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+﻿# Vidyashakti International School — Frontend
 
-# Run and deploy your AI Studio app
+This repository contains a Vite + React (TypeScript) frontend for Vidyashakti International School.
 
-This contains everything you need to run your app locally.
+## Local development
 
-View your app in AI Studio: https://ai.studio/apps/104dddfe-05c6-4fa9-930f-e72dd33259d2
+- Install dependencies:
 
-## Run Locally
+```bash
+npm install
+```
 
-**Prerequisites:**  Node.js
+- Run development server:
 
+```bash
+npm run dev
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- Build for production:
+
+```bash
+npm run build
+```
+
+- Locally preview the production build:
+
+```bash
+npm run preview
+```
+
+## Deploying to Vercel
+
+Recommended: connect your GitHub repository to Vercel for automatic deployments on push.
+
+1. Ensure your code is pushed to GitHub (this repo is already pushed).
+2. Go to https://vercel.com/import and choose **Import from Git** → **GitHub**.
+3. Select the repository `ReachOutToHardik/schlexample` and import it.
+4. In the project settings use these values:
+   - **Framework Preset:** Vite
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+5. Add any environment variables under the Environment section if your app requires them.
+6. Click **Deploy**. Vercel will build and provide a deployment URL. Subsequent pushes to the default branch will trigger new deployments automatically.
+
+Optional: deploy with the Vercel CLI
+
+```bash
+npm i -g vercel
+vercel login
+cd path/to/project
+vercel --prod
+```
+
+First-run prompts will guide you to link the project and set the framework/build settings (you can accept the defaults above).
+
+## Notes
+
+- If you want a dedicated Vercel configuration file, create `vercel.json` with a static-build setup and `dist` as the output directory.
+- If you want, I can add `vercel.json` and set a GitHub action or help configure a custom domain.
